@@ -1,0 +1,43 @@
+<html>
+  <body>
+    <script>
+      function Conteudo() {
+        this.titulo = ''
+        this.pais = ''
+        this.classificacaoIndicativa = ''
+        this.sinopse = ''
+      }
+
+      function Filme() {
+        Conteudo.call(this)
+        this.dataDeEstreia = ''
+        this.duracao = ''
+      }
+
+      function Serie() {
+        Conteudo.call(this)
+        this.dataPrimeiroEpisodio = ''
+        this.dataUltimoEpisodio = ''
+        this.qtdDeEpisodios = 0
+      }
+
+      Filme.prototype = Object.create(Conteudo)
+      Serie.prototype = Object.create(Conteudo)
+
+      var burning = new Filme()
+
+      burning.titulo = 'Burning'
+      burning.pais = 'Republica da Coreia'
+      burning.dataDeEstreia = new Date('May 17 2018')
+
+      console.log(burning.pais)
+      console.log(burning.qtdDeEpisodios) //undefined, porque esse atributo só pertence ao objeto Serie
+
+      var sweet = new Serie()
+
+      console.log(sweet.qtdDeEpisodios) //nao é undefined porque esse atributo tem valor default no objeto Serie
+      console.log(sweet.duracao) //undefined, porque esse atributo só pertence ao objeto Filme
+      console.log(sweet.titulo) //nao é undefined porque esse atributo tem valor default herdado do objeto Conteudo
+    </script>
+  </body>
+</html>
