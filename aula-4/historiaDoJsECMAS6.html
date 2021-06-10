@@ -1,0 +1,114 @@
+<html>
+  <body>
+    <script>
+      //História do JavaScript - ECMAScript 6
+
+      /*
+        O ECMAScript 6 foi uma das atualizações mais importantes do JS.
+        Ela trouxe diversas novidades que são amplamente usadas por todos
+        os programadores de JavaScript. A seguir algumas delas:
+      */
+
+      //Variáveis
+      /*
+        O ES6 trouxe ao javascript o conceito de escopos. Isso significa que uma variável
+        só existe dentro de um determinado bloco.
+        Isso é feito utilizando a nova palavra-chave let. É similar ao var mais a diferença é
+        justamente o escopo. Por exemplo:
+      */
+
+      var x = 3
+      var y = 2
+
+      if (x > y) {
+        let z = x + y
+      }
+
+      console.log(z) //erro: z nao esta definido. se estivesse utilizando var nao ocorreria esse erro.
+
+      //Além do let, o ES6 introduziu o const. Possui o mesmo conceito de escopo do let, mas seu valor não pode ser alterado.
+      const nome = 'Ricardo'
+      nome = 'José' //erro: assignment to constant variable
+
+      /*
+        Outra novidade muito popular são as arrow functions que deixam o código mais simple e menos verboso
+      */
+
+      var arr = [1, 2, 3, 4, 5]
+
+      //função tradicional:
+      var dobro = arr.map(function (x) {
+        return x + x
+      })
+
+      //arrow function:
+      var dobro = arr.map((x) => x + x)
+
+      //Destructuring
+      /*
+        Destructuring é uma forma conveniente de extrair dados (que podem estar aninhados) de objetos e arrays.
+      */
+      const obj = {
+        primeiroNome: 'João',
+        sobrenome: 'Silva',
+        endereco: { rua: 'rua 1', bairro: 'bairro 2', cidade: 'city' },
+      }
+
+      const {
+        primeiroNome: nome,
+        sobrenome,
+        endereco: { rua, bairro, cidade },
+      } = obj //joao, silva, rua 1, bairro 2, city
+
+      //string interpolation também é uma adição do ES6
+      console.log(`${nome} ${sobrenome}`) //joao silva
+
+      //forma tradicional
+      var nome = obj.primeiroNome
+      var sobrenome = obj.sobrenome
+      //etc..
+
+      //Classes
+      /*
+        O ES6 trouxe uma síntaxe muito mais amigável e parecida com outras línguagems, como Java,
+        para implementar orientação a objetos.
+      */
+
+      class Pessoa {
+        constructor(nome, dataNascimento) {
+          this.nome = nome
+          this.dataNascimento = dataNascimento
+        }
+      }
+
+      class Aluno extends Pessoa {
+        constructor(nome, dataNascimento, matricula) {
+          super(nome, dataNascimento)
+          this.matricula = matricula
+        }
+      }
+
+      const aluno = new Aluno('Maria', new Date('April 1 1980'), 'sp0148910')
+
+      /* 
+        Apesar da síntaxe diferente, a implementação de POO permanece a mesma do JavaScript tradicional,
+        podemos verificar isso ao checar o tipo de Aluno
+      */
+      console.log(typeof Aluno) //function
+
+      //forma tradicional
+      function Pessoa() {
+        this.nome = ''
+        this.dataNascimento = ''
+      }
+
+      function Aluno() {
+        Pessoa.call(this)
+        this.matricula = ''
+      }
+
+      Aluno.prototype = Object.create(Pessoa)
+      var aluno = new Aluno()
+    </script>
+  </body>
+</html>
