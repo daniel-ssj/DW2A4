@@ -6,7 +6,6 @@ const App = () => {
       <a
         href='https://github.com/daniel-ssj/DW2A4/tree/main/aula-9'
         target='_blank'
-        rel='noopener noreferrer'
       >
         a
       </a>
